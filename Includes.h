@@ -1,0 +1,13 @@
+#include <iostream>
+#include <vector>
+#include <iomanip>
+#include <algorithm>
+using std::cout;
+using std::string;
+using std::cin;
+using std::endl;
+using std::vector;
+using std::left;
+using std::setw;
+using std::setprecision;
+using std::fixed;
