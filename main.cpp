@@ -4,15 +4,10 @@
 #include <iomanip>
 #include <algorithm>
 
-int generateRandomNumber(int min, int max) {
-    static std::random_device rd;
-    static std::mt19937 gen(rd());
-    std::uniform_int_distribution<> distrib(min, max);
-    return distrib(gen);
-};
 
 void runDinaminiaiMasyvai(); 
 void WithRandomNumbers();
+void GenerateRandomNumbersAndNames();
 
 
 int main() {
@@ -32,13 +27,13 @@ int main() {
              WithRandomNumbers();
             break;
         case 3: 
-        //code 
+            GenerateRandomNumbersAndNames();
         case 4:
         cout << "Darbas baigiamas" << endl;
-        
+
         break;
         default:
-            std::cout << "Invalid choice!" << std::endl;
+            cout << "Invalid choice!" << endl;
     }
 
     return 0;

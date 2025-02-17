@@ -8,14 +8,14 @@
  struct Studentas {
      std::string vardas;
      std::string pavarde;
-     std::vector<int> pazymiai;  // Vector instead of dynamic array
+     std::vector<int> pazymiai;  
      int egzaminoPazimys;
  
     
  };
  
 void runVektoriai() {
-     vector<Studentas> studentai;  // Vector for students
+     vector<Studentas> studentai;  
  
      string choice;
      do {
@@ -31,7 +31,7 @@ void runVektoriai() {
              int pazymys;
              cout << "Irasykite pazymi: ";
              cin >> pazymys;
-             naujasStudentas.pazymiai.push_back(pazymys);  // Using push_back()
+             naujasStudentas.pazymiai.push_back(pazymys);  
  
              cout << "Ar norite prideti dar viena pazymi? (taip/ne): ";
              cin >> PazymiuIrasymoPasirinkimas;
@@ -40,7 +40,7 @@ void runVektoriai() {
          cout << "Iveskite studento egzamino pazymi: ";
          cin >> naujasStudentas.egzaminoPazimys;
  
-         studentai.push_back(naujasStudentas);  // Add student to vector
+         studentai.push_back(naujasStudentas); 
  
          cout << "Prideti dar viena studenta? (taip/ne): ";
          cin >> choice;

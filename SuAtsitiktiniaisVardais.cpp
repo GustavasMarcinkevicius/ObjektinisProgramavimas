@@ -5,8 +5,8 @@
 
 
 
+void GenerateRandomNumbersAndNames()
 
-void WithRandomNumbers() 
 
 {
 
@@ -17,34 +17,38 @@ struct Studentas {
     vector<int> pazymiai;
     int egzaminoPazimys;
 
+
 };
-
     vector<Studentas> studentai;
-    string choice;
+    int StudentuKiekis;
 
-    do {
+    cout << "Iveskite studentu skaiciu "; cin >> StudentuKiekis;
+    cout << "st " << StudentuKiekis << endl;
+
+   for (int o =0; o < StudentuKiekis; o++){
+
         Studentas studentas;
+            studentas.vardas = generateRandomName();
+            studentas.pavarde = generateRandomSurname();
 
-        cout << "Iveskite studento varda: ";
-        cin >> studentas.vardas;
-        cout << "Iveskite studento pavarde: ";
-        cin >> studentas.pavarde;
-
-            int pazymiuKiekis = generateRandomNumber(3, 10); 
+            int pazymiuKiekis = generateRandomNumber(3, 10);
+         
             for (int i = 0; i < pazymiuKiekis; i++) {
-                studentas.pazymiai.push_back(generateRandomNumber(1, 10));
+                int pazymis = generateRandomNumber(1, 10);
+              
+                studentas.pazymiai.push_back(pazymis);
+
             }
-     
+        
 
         studentas.egzaminoPazimys = generateRandomNumber(1, 10);
         studentai.push_back(studentas);
-
-        cout << "Prideti dar viena studenta? (taip/ne): ";
-        cin >> choice;
-    } while (choice == "taip");
+      
+        };
+  
 
     cout << "Vardas              Pavarde             Galutinis (Vid.)/ Galutinis (Med.)" << endl;
-    cout << "-------------------------------------------------------------------------n" << endl;
+    cout << "--------------------------------------------------------------------------" << endl;
 
     for (const auto& studentas : studentai) {
         double Vidurkis = 0;
