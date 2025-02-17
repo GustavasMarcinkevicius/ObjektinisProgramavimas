@@ -35,6 +35,7 @@ int main() {
         //code 
         case 4:
         cout << "Darbas baigiamas" << endl;
+        
         break;
         default:
             std::cout << "Invalid choice!" << std::endl;
