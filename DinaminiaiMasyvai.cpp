@@ -20,7 +20,7 @@ struct Studentas {
     }
 };
 
-int main() {
+void runDinaminiaiMasyvai() {
     int size = 0;
     int capacity = 1;
     Studentas* studentas = new Studentas[capacity];
@@ -107,5 +107,4 @@ int main() {
 
     delete[] studentas;
 
-    return 0;
 }
