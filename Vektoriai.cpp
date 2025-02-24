@@ -7,15 +7,18 @@
  
  struct Studentas {
      std::string vardas;
-     std::string pavarde;
+
      std::vector<int> pazymiai;  
+
      int egzaminoPazimys;
  
     
  };
  
+
 void WithVectors () {
      vector<Studentas> studentai;  
+
  
      string choice;
      do {
@@ -31,7 +34,9 @@ void WithVectors () {
              int pazymys;
              cout << "Irasykite pazymi: ";
              cin >> pazymys;
+
              naujasStudentas.pazymiai.push_back(pazymys);  
+
  
              cout << "Ar norite prideti dar viena pazymi? (taip/ne): ";
              cin >> PazymiuIrasymoPasirinkimas;
@@ -39,8 +44,10 @@ void WithVectors () {
  
          cout << "Iveskite studento egzamino pazymi: ";
          cin >> naujasStudentas.egzaminoPazimys;
+
  
-         studentai.push_back(naujasStudentas); 
+   studentai.push_back(naujasStudentas); 
+
  
          cout << "Prideti dar viena studenta? (taip/ne): ";
          cin >> choice;
@@ -75,6 +82,10 @@ void WithVectors () {
  
          cout << left << setw(20) << studentas.vardas  << left << setw(20) << studentas.pavarde  << left << setw(18) << fixed << setprecision(2) << GalutinisBalasVidurkis <<  left << setw(18) << fixed << setprecision(2) << GalutinisBalasMediana << endl;
      }
+
+
+
+ 
 
  }
  
