@@ -183,5 +183,5 @@ if (IsvedimoPasirinkimas == 2){
 
 int main() {
     WithVectors();  
-    return 0;
+    return 0; 
 }
