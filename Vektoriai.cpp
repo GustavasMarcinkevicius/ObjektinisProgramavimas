@@ -3,6 +3,8 @@
 #include <sstream>
 
 
+
+
 struct Studentas {
     string vardas;
     string pavarde;
@@ -15,6 +17,7 @@ void WithVectors() {
     vector<Studentas> studentai;
     int VeikimoPasirinkimas;
     int IsvedimoPasirinkimas;
+    int RusiavimoPasirinkimas;
 
     cout << "Pasirinkite: " << endl;
     cout << "Rasyti ranka - 1" << endl;
@@ -26,6 +29,14 @@ void WithVectors() {
         cout << "Faila - 2" << endl;
         cin >> IsvedimoPasirinkimas;
     }
+
+    cout << "pasirinkite rusiavimo tipa:" << endl;
+    cout << "Pagal varda - 1" << endl;
+    cout << "Pagal pavarde - 2" << endl;
+    cout << "Pagal galutini pazymi (nuo Vidurkio) - 3" << endl;
+    cout << "Pagal galutini pazymi (nuo Medianos) - 4" << endl;
+    cin >> RusiavimoPasirinkimas;
+
 
     if (VeikimoPasirinkimas == 1) {
         string choice;
@@ -120,6 +131,57 @@ void WithVectors() {
         }
 
         InputFile.close();
+
+if (RusiavimoPasirinkimas == 3){ //sortint pagal Vidurki
+
+        sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
+            double avgA = 0, avgB = 0;
+            for (int pazymys : a.pazymiai) {
+                avgA += pazymys;
+            }
+            if (!a.pazymiai.empty()) avgA /= a.pazymiai.size();
+            for (int pazymys : b.pazymiai) {
+                avgB += pazymys;
+            }
+            if (!b.pazymiai.empty()) avgB /= b.pazymiai.size();
+    
+            double galutinisA = 0.4 * avgA + 0.6 * a.egzaminoPazimys;
+            double galutinisB = 0.4 * avgB + 0.6 * b.egzaminoPazimys;
+            return galutinisA > galutinisB;
+        });
+    };
+
+    if (RusiavimoPasirinkimas == 4){ //Sortint pagal mediana
+        sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
+            vector<int> sortedA = a.pazymiai;
+            sort(sortedA.begin(), sortedA.end());
+            double medianA = 0;
+            
+            
+                int pazymiuKiekis = sortedA.size();
+                if (pazymiuKiekis % 2 == 0) {
+                    medianA = (sortedA[pazymiuKiekis / 2 - 1] + sortedA[pazymiuKiekis / 2]) / 2.0;
+                } else {
+                    medianA = sortedA[pazymiuKiekis / 2];
+                }
+            
+    
+            vector<int> sortedB = b.pazymiai;
+            sort(sortedB.begin(), sortedB.end());
+            double medianB = 0;
+            
+                int n = sortedB.size();
+                if (n % 2 == 0) {
+                    medianB = (sortedB[n / 2 - 1] + sortedB[n / 2]) / 2.0;
+                } else {
+                    medianB = sortedB[n / 2];
+                }
+        
+                double galutinisA = 0.4 * medianA + 0.6 * a.egzaminoPazimys;
+                double galutinisB = 0.4 * medianB + 0.6 * b.egzaminoPazimys;
+                return galutinisA > galutinisB;
+        });
+    }
 
         if (IsvedimoPasirinkimas == 1){
 
