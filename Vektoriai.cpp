@@ -1,9 +1,7 @@
 #include "Includes.h"
 #include <fstream>
 #include <sstream>
-
-
-
+#include <chrono> 
 
 struct Studentas {
     string vardas;
@@ -11,6 +9,38 @@ struct Studentas {
     vector<int> pazymiai;  
     int egzaminoPazimys;
 };
+
+void ApskaiciuotiVeikimoLaikoVidurki(){
+    std::ifstream file("TestavimoLaikuLog.txt");
+
+    double inputTime, runningTime;
+    std::vector<double> inputTimes;
+    std::vector<double> runningTimes;
+
+    while (file >> inputTime >> runningTime) {
+        inputTimes.push_back(inputTime);
+        runningTimes.push_back(runningTime);
+    }
+
+    file.close();
+
+    double totalInputTime = 0.0;
+    for (double time : inputTimes) {
+        totalInputTime += time;
+    }
+    double avgInputTime = totalInputTime / inputTimes.size();
+
+    double totalRunningTime = 0.0;
+    for (double time : runningTimes) {
+        totalRunningTime += time;
+    }
+    double avgRunningTime = totalRunningTime / runningTimes.size();
+
+    std::cout << "Vidutinis Skaitymo laikas: " << std::fixed << std::setprecision(6) << avgInputTime << " sekundziu" << endl;;
+    std::cout << "Vidutinis Programos veikimo laikas: " << std::fixed << std::setprecision(6) << avgRunningTime << " sekundziu" << endl;;
+}
+
+
 
 void WithVectors() {
     std::ostringstream output;
@@ -106,7 +136,11 @@ void WithVectors() {
     if (VeikimoPasirinkimas == 2) {  
         std::ifstream InputFile("Studentai10000.txt", std::ios::in);
         std::ofstream OutputFile("StudentaiOutput.txt", std::ios::trunc); 
+
+        std::ofstream logFile("TestavimoLaikuLog.txt", std::ios::app);
+        
       
+        std::chrono::high_resolution_clock::time_point Readingstart = std::chrono::high_resolution_clock::now();
 
         string header;
         getline(InputFile, header);
@@ -131,6 +165,12 @@ void WithVectors() {
         }
 
         InputFile.close();
+
+        std::chrono::high_resolution_clock::time_point Readingend = std::chrono::high_resolution_clock::now();
+
+        std::chrono::duration<double> Readingduration = Readingend - Readingstart;
+        
+
 
 if (RusiavimoPasirinkimas == 1){ //sortint pagal varda/
     sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
@@ -245,6 +285,7 @@ if (IsvedimoPasirinkimas == 2){
             << left << setw(18) << fixed << setprecision(2) << GalutinisBalasVidurkis
             << left << setw(18) << fixed << setprecision(2) << GalutinisBalasMediana
             << '\n';
+
             }
             if (IsvedimoPasirinkimas == 2){
                 OutputFile << left << setw(20) << studentas.vardas
@@ -254,12 +295,23 @@ if (IsvedimoPasirinkimas == 2){
                 << '\n';
             }
         }
+       
         cout << output.str();
+        cout << "Skaitymo Laikas: " << Readingduration.count() << " sekundes" << endl;
+        std::chrono::high_resolution_clock::time_point ProgramEnd = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> ProgramDuration = ProgramEnd - Readingstart;
+        cout << "Visos programos veikimo laikas: " << ProgramDuration.count() << " sekundes" << endl;
+        logFile << Readingduration.count() << " " << ProgramDuration.count() << endl;
     }
+
 }
+
 
 int main() {
     WithVectors();  
+    ApskaiciuotiVeikimoLaikoVidurki();
+   
     return 0; 
+
 }
   
