@@ -23,12 +23,12 @@ void WithVectors() {
     cout << "Rasyti ranka - 1" << endl;
     cout << "Nuskaityti is failo - 2" << endl;
     cin >> VeikimoPasirinkimas;
-    if (VeikimoPasirinkimas == 2){
+
         cout << "Duomenis isvesti i:" << endl;
         cout << "Ekrana - 1" << endl;
         cout << "Faila - 2" << endl;
         cin >> IsvedimoPasirinkimas;
-    }
+    
 
     cout << "pasirinkite rusiavimo tipa:" << endl;
     cout << "Pagal varda - 1" << endl;
@@ -38,7 +38,7 @@ void WithVectors() {
     cin >> RusiavimoPasirinkimas;
 
 
-    if (VeikimoPasirinkimas == 1) {
+    if (VeikimoPasirinkimas == 1) { //rasyti ranka
         string choice;
         do {
             Studentas naujasStudentas;
@@ -131,6 +131,21 @@ void WithVectors() {
         }
 
         InputFile.close();
+
+if (RusiavimoPasirinkimas == 1){ //sortint pagal varda
+    sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
+        return a.vardas < b.vardas;
+    });
+    
+}
+
+
+if (RusiavimoPasirinkimas == 2){ //sortint pagal pavarde
+    sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
+        return a.pavarde < b.pavarde;
+    });
+    
+}
 
 if (RusiavimoPasirinkimas == 3){ //sortint pagal Vidurki
 
