@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 
+
 struct Studentas {
     string vardas;
     string pavarde;
@@ -10,13 +11,21 @@ struct Studentas {
 };
 
 void WithVectors() {
+    std::ostringstream output;
     vector<Studentas> studentai;
     int VeikimoPasirinkimas;
+    int IsvedimoPasirinkimas;
 
     cout << "Pasirinkite: " << endl;
     cout << "Rasyti ranka - 1" << endl;
     cout << "Nuskaityti is failo - 2" << endl;
     cin >> VeikimoPasirinkimas;
+    if (VeikimoPasirinkimas == 2){
+        cout << "Duomenis isvesti i:" << endl;
+        cout << "Ekrana - 1" << endl;
+        cout << "Faila - 2" << endl;
+        cin >> IsvedimoPasirinkimas;
+    }
 
     if (VeikimoPasirinkimas == 1) {
         string choice;
@@ -84,14 +93,15 @@ void WithVectors() {
     
 
     if (VeikimoPasirinkimas == 2) {  
-        std::ifstream file("Studentai10000.txt", std::ios::in); 
+        std::ifstream InputFile("Studentai10000.txt", std::ios::in);
+        std::ofstream OutputFile("StudentaiOutput.txt", std::ios::trunc); 
       
 
         string header;
-        getline(file, header);
+        getline(InputFile, header);
 
         string line;
-        while (getline(file, line)) {
+        while (getline(InputFile, line)) {
            std::istringstream lineStream(line);
             Studentas naujasStudentas;
 
@@ -109,12 +119,21 @@ void WithVectors() {
             studentai.push_back(naujasStudentas);
         }
 
-        file.close();
+        InputFile.close();
+
+        if (IsvedimoPasirinkimas == 1){
 
         cout << "Vardas              Pavarde             Galutinis (Vid.)/ Galutinis (Med.)" << endl;
         cout << "--------------------------------------------------------------------------" << endl;
-
+        }
         
+if (IsvedimoPasirinkimas == 2){
+    OutputFile << "Vardas              Pavarde             Galutinis (Vid.)/ Galutinis (Med.)\n";
+    OutputFile << "--------------------------------------------------------------------------\n";
+    
+
+}
+
         for (const auto& studentas : studentai) {
             double Vidurkis = 0, Mediana = 0, GalutinisBalasVidurkis = 0, GalutinisBalasMediana = 0;
 
@@ -143,13 +162,22 @@ void WithVectors() {
             GalutinisBalasMediana = 0.4 * Mediana + 0.6 * studentas.egzaminoPazimys;
             GalutinisBalasVidurkis = 0.4 * Vidurkis + 0.6 * studentas.egzaminoPazimys;
 
-            
-            cout << left << setw(20) << studentas.vardas
-                      << left << setw(20) << studentas.pavarde
-                      << left << setw(18) << fixed << setprecision(2) << GalutinisBalasVidurkis
-                      << left << setw(18) << fixed << setprecision(2) << GalutinisBalasMediana
-                      << endl;
+            if (IsvedimoPasirinkimas == 1){
+              output << left << setw(20) << studentas.vardas
+            << left << setw(20) << studentas.pavarde
+            << left << setw(18) << fixed << setprecision(2) << GalutinisBalasVidurkis
+            << left << setw(18) << fixed << setprecision(2) << GalutinisBalasMediana
+            << '\n';
+            }
+            if (IsvedimoPasirinkimas == 2){
+                OutputFile << left << setw(20) << studentas.vardas
+                << left << setw(20) << studentas.pavarde
+                << left << setw(18) << fixed << setprecision(2) << GalutinisBalasVidurkis
+                << left << setw(18) << fixed << setprecision(2) << GalutinisBalasMediana
+                << '\n';
+            }
         }
+        cout << output.str();
     }
 }
 
