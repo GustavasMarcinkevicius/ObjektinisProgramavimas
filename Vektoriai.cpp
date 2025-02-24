@@ -14,7 +14,7 @@
     
  };
  
-void runVektoriai() {
+void WithVectors () {
      vector<Studentas> studentai;  
  
      string choice;
@@ -75,7 +75,6 @@ void runVektoriai() {
  
          cout << left << setw(20) << studentas.vardas  << left << setw(20) << studentas.pavarde  << left << setw(18) << fixed << setprecision(2) << GalutinisBalasVidurkis <<  left << setw(18) << fixed << setprecision(2) << GalutinisBalasMediana << endl;
      }
- 
 
  }
  
