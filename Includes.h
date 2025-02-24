@@ -19,8 +19,10 @@ using std::setprecision;
 using std::fixed;
 
 
+
 int generateRandomNumber(int min, int max);
 string generateRandomName();
 string generateRandomSurname();
 
 #endif 
+
