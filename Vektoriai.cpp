@@ -132,7 +132,7 @@ void WithVectors() {
 
         InputFile.close();
 
-if (RusiavimoPasirinkimas == 1){ //sortint pagal varda
+if (RusiavimoPasirinkimas == 1){ //sortint pagal varda/
     sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
         return a.vardas < b.vardas;
     });
@@ -262,3 +262,4 @@ int main() {
     WithVectors();  
     return 0; 
 }
+  
