@@ -1,78 +1,72 @@
 #include "Includes.h"
 
-struct Studentas {
-    string vardas;
-    string pavarde;
-    int* pazymiai;
-    int pazymiuSkaicius;
-    int pazymiuCapacity;
-    int egzaminoPazimys;
-
-    Studentas() {
-        pazymiai = new int[1];
-        pazymiuSkaicius = 0;
-        pazymiuCapacity = 1;
-        egzaminoPazimys = 0;
-    }
-
-    ~Studentas() {
-        delete[] pazymiai;
-    }
-};
-
-void runDinaminiaiMasyvai() {
+void WithRandomNumbersArrays(int ArGeneruotiVardus) {
+    struct Studentas {
+        string vardas;
+        string pavarde;
+        int* pazymiai;
+        int pazymiuSkaicius;
+        int pazymiuCapacity;
+        int egzaminoPazimys;
+    };
 
     int size = 0;
     int capacity = 1;
     Studentas* studentas = new Studentas[capacity];
 
-    string choice;
-    do {
+    string choice = "taip";
+    while (choice == "taip"){
         if (size == capacity) {
             capacity++;
             Studentas* temp = new Studentas[capacity];
             for (int i = 0; i < size; i++) {
-                temp[i] = studentas[i];
+                temp[i] = studentas[i]; 
+                temp[i].pazymiai = new int[studentas[i].pazymiuCapacity]; 
+                for (int j = 0; j < studentas[i].pazymiuSkaicius; j++) {
+                    temp[i].pazymiai[j] = studentas[i].pazymiai[j]; 
+                }
             }
             delete[] studentas;
             studentas = temp;
         }
 
-        cout << "Iveskite studento varda: ";  cin >> studentas[size].vardas;
-        cout << "Iveskite studento pavarde: ";   cin >> studentas[size].pavarde;
+        studentas[size].pazymiuSkaicius = 0;
+        studentas[size].pazymiuCapacity = 1;
+        studentas[size].pazymiai = new int[studentas[size].pazymiuCapacity]; 
+        studentas[size].egzaminoPazimys = 0;
 
-        string PazymiuIrasymoPasirinkimas = "taip";
+        if (ArGeneruotiVardus == 0) {
+            cout << "Iveskite studento varda: ";  
+            cin >> studentas[size].vardas;
+            cout << "Iveskite studento pavarde: ";   
+            cin >> studentas[size].pavarde;
+        } else {
+            studentas[size].vardas = generateRandomName();
+            studentas[size].pavarde = generateRandomSurname();
+        }
+
         int indeksas = 0;
-
-        while (PazymiuIrasymoPasirinkimas == "taip") {
+        int pazymiuKiekis = generateRandomNumber(3, 10);
+        for (int i = 0; i < pazymiuKiekis; i++) {
             if (indeksas == studentas[size].pazymiuCapacity) {
-                studentas[size].pazymiuCapacity++;
+                studentas[size].pazymiuCapacity *= 2;
                 int* naujiPazymiai = new int[studentas[size].pazymiuCapacity];
-                for (int i = 0; i < indeksas; i++) {
-                    naujiPazymiai[i] = studentas[size].pazymiai[i];
+                for (int j = 0; j < indeksas; j++) {
+                    naujiPazymiai[j] = studentas[size].pazymiai[j];
                 }
                 delete[] studentas[size].pazymiai;
                 studentas[size].pazymiai = naujiPazymiai;
             }
-
-            cout << "Irasykite pazymi numeris " << indeksas + 1 << ": ";
-            cin >> studentas[size].pazymiai[indeksas];
-            indeksas++;
-
-            cout << "Ar norite prideti dar viena pazymi siam studentui: " 
-                 << studentas[size].vardas << "(parasykite taip/ne): "; 
-            cin >> PazymiuIrasymoPasirinkimas;
+            studentas[size].pazymiai[indeksas++] = generateRandomNumber(1, 10);
         }
 
-        cout << "Iveskite studento egzamino pazymi: "; cin >> studentas[size].egzaminoPazimys;
-
+        studentas[size].egzaminoPazimys = generateRandomNumber(1, 10);
         studentas[size].pazymiuSkaicius = indeksas;
         size++;
 
         cout << "Prideti dar viena studenta? (parasykite taip/ne): "; 
         cin >> choice;
-
-    } while (choice == "taip");
+    } 
 
     cout << "Vardas              Pavarde             Galutinis (Vid.)/ Galutinis (Med.)" << endl;
     cout << "--------------------------------------------------------------------------" << endl;
@@ -106,7 +100,8 @@ void runDinaminiaiMasyvai() {
              << left << setw(18) << setprecision(2) << fixed << GalutinisBalasMediana << endl;
     }
 
-    delete[] studentas;
-
-
+    for (int i = 0; i < size; i++) {
+        delete[] studentas[i].pazymiai; 
+    }
+    delete[] studentas; 
 }
