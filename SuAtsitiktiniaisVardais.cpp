@@ -15,8 +15,17 @@ void GenerateRandomNumbersAndNames()
     vector<Studentas> studentai;
     int StudentuKiekis;
 
-    cout << "Iveskite studentu skaiciu "; cin >> StudentuKiekis;
-    cout << "st " << StudentuKiekis << endl;
+ 
+    try {
+        cout << "Iveskite studentu skaiciu "; cin >> StudentuKiekis;
+        if (StudentuKiekis <= 0) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            throw std::out_of_range("Studentu kiekis turi but didesnis uz 0.");
+        }
+        }    catch (const std::out_of_range& e) {
+            std::cerr << "Studentu kiekis turi but didesnis uz 0." << std::endl;
+        }
 
    for (int o =0; o < StudentuKiekis; o++){
 
