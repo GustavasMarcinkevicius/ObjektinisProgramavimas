@@ -11,14 +11,7 @@ void GenerateRandomNumbersAndNames()
 {
 
     
-struct Studentas {
-    string vardas;
-    string pavarde;
-    vector<int> pazymiai;
-    int egzaminoPazimys;
-
-
-};
+#include "Struktura.h"
     vector<Studentas> studentai;
     int StudentuKiekis;
 

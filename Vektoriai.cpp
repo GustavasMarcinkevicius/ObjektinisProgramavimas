@@ -1,48 +1,9 @@
 #include "Includes.h"
-#include <fstream>
-#include <sstream>
-#include <chrono> 
-
-struct Studentas {
-    string vardas;
-    string pavarde;
-    vector<int> pazymiai;  
-    int egzaminoPazimys;
-};
-
-void ApskaiciuotiVeikimoLaikoVidurki(){
-    std::ifstream file("TestavimoLaikuLog.txt");
-
-    double inputTime, runningTime;
-    std::vector<double> inputTimes;
-    std::vector<double> runningTimes;
-
-    while (file >> inputTime >> runningTime) {
-        inputTimes.push_back(inputTime);
-        runningTimes.push_back(runningTime);
-    }
-
-    file.close();
-
-    double totalInputTime = 0.0;
-    for (double time : inputTimes) {
-        totalInputTime += time;
-    }
-    double avgInputTime = totalInputTime / inputTimes.size();
-
-    double totalRunningTime = 0.0;
-    for (double time : runningTimes) {
-        totalRunningTime += time;
-    }
-    double avgRunningTime = totalRunningTime / runningTimes.size();
-
-    std::cout << "Vidutinis Skaitymo laikas: " << std::fixed << std::setprecision(6) << avgInputTime << " sekundziu" << endl;;
-    std::cout << "Vidutinis Programos veikimo laikas: " << std::fixed << std::setprecision(6) << avgRunningTime << " sekundziu" << endl;;
-}
-
 
 
 void WithVectors() {
+#include "Struktura.h"
+
     std::ostringstream output;
     vector<Studentas> studentai;
     int VeikimoPasirinkimas;
@@ -307,11 +268,4 @@ if (IsvedimoPasirinkimas == 2){
 }
 
 
-int main() {
-    WithVectors();  
-    ApskaiciuotiVeikimoLaikoVidurki();
-   
-    return 0; 
-
-}
   

@@ -7,6 +7,9 @@
 #include <iomanip>
 #include <algorithm>
 #include <random>
+#include <fstream>
+#include <sstream>
+#include <chrono> 
 
 using std::cout;
 using std::string;
@@ -23,6 +26,7 @@ using std::fixed;
 int generateRandomNumber(int min, int max);
 string generateRandomName();
 string generateRandomSurname();
+void ApskaiciuotiVeikimoLaikoVidurki();
 
 #endif 
 

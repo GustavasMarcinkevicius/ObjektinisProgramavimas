@@ -18,3 +18,33 @@ string generateRandomSurname() {
     vector<string> pavardes = {"Walker IV", "Francisko", "Lekavicius", "Brazdeikis", "Giedraitis", "Birutis", "Smailagic", "Mitchell", "Dimsa", "Dunston", "Manek", "Butkevicius", "Sirvydis", "Ulanovas"};
     return pavardes[generateRandomNumber(0, pavardes.size() -1)];
 }
+
+void ApskaiciuotiVeikimoLaikoVidurki(){
+    std::ifstream file("TestavimoLaikuLog.txt");
+
+    double inputTime, runningTime;
+    std::vector<double> inputTimes;
+    std::vector<double> runningTimes;
+
+    while (file >> inputTime >> runningTime) {
+        inputTimes.push_back(inputTime);
+        runningTimes.push_back(runningTime);
+    }
+
+    file.close();
+
+    double totalInputTime = 0.0;
+    for (double time : inputTimes) {
+        totalInputTime += time;
+    }
+    double avgInputTime = totalInputTime / inputTimes.size();
+
+    double totalRunningTime = 0.0;
+    for (double time : runningTimes) {
+        totalRunningTime += time;
+    }
+    double avgRunningTime = totalRunningTime / runningTimes.size();
+
+    std::cout << "Vidutinis Skaitymo laikas: " << std::fixed << std::setprecision(6) << avgInputTime << " sekundziu" << endl;;
+    std::cout << "Vidutinis Programos veikimo laikas: " << std::fixed << std::setprecision(6) << avgRunningTime << " sekundziu" << endl;;
+}

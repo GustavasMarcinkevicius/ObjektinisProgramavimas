@@ -1,10 +1,5 @@
-#include <iostream>
+#include "Struktura.h"
 #include "Includes.h"
-#include <random>
-#include <iomanip>
-#include <algorithm>
-
-
 void runDinaminiaiMasyvai(); 
 void WithRandomNumbers();
 void GenerateRandomNumbersAndNames();
@@ -22,7 +17,7 @@ int main() {
 
     switch (choice1) {
 case 1: 
-cout << "1. Viska rasyti ranka" << endl;
+cout << "1. Viska rasyti ranka/Nuskaityti is failo" << endl;
 cout << "2. Generuoti pazymius" << endl;
 cout << "3. Generuoti studentus ir pazymius" << endl;
 cout << "4. Baigti darba" << endl;
@@ -45,6 +40,7 @@ cin >> choice2;
                 default:
                     cout << "Blogas Pasirinkimas" << endl;
             }
+            break;
 case 2:
 cout << "1. Viska rasyti ranka" << endl;
 cout << "2. Generuoti pazymius" << endl;

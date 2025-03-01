@@ -1,23 +1,12 @@
 #include "Includes.h"
-#include <random>
-#include <iomanip>
-#include <algorithm>
-
-
-
 
 void WithRandomNumbers() 
 
 {
 
     
-struct Studentas {
-    string vardas;
-    string pavarde;
-    vector<int> pazymiai;
-    int egzaminoPazimys;
+#include "Struktura.h"
 
-};
 
     vector<Studentas> studentai;
     string choice;
