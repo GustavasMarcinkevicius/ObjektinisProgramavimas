@@ -1,7 +1,7 @@
 #include "Includes.h"
 
 void WithRandomNumbersArrays(int ArGeneruotiVardus) {
-    struct Studentas {
+    struct StudentasMasyvas {
         string vardas;
         string pavarde;
         int* pazymiai;
@@ -12,13 +12,13 @@ void WithRandomNumbersArrays(int ArGeneruotiVardus) {
 
     int size = 0;
     int capacity = 1;
-    Studentas* studentas = new Studentas[capacity];
+    StudentasMasyvas* studentas = new StudentasMasyvas[capacity];
 
     string choice = "taip";
     while (choice == "taip"){
         if (size == capacity) {
             capacity++;
-            Studentas* temp = new Studentas[capacity];
+            StudentasMasyvas* temp = new StudentasMasyvas[capacity];
             for (int i = 0; i < size; i++) {
                 temp[i] = studentas[i]; 
                 temp[i].pazymiai = new int[studentas[i].pazymiuCapacity]; 

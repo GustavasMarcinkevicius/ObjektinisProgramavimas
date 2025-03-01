@@ -10,6 +10,7 @@
 #include <fstream>
 #include <sstream>
 #include <chrono> 
+#include "Struktura.h"
 
 using std::cout;
 using std::string;
@@ -27,6 +28,7 @@ int generateRandomNumber(int min, int max);
 string generateRandomName();
 string generateRandomSurname();
 void ApskaiciuotiVeikimoLaikoVidurki();
+void sortStudentai(std::vector<Studentas>& studentai, int RusiavimoPasirinkimas);
 
 #endif 
 

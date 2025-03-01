@@ -1,6 +1,6 @@
 #include "Includes.h"
 
-struct Studentas {
+struct StudentasMasyvas {
     string vardas;
     string pavarde;
     int* pazymiai;
@@ -8,14 +8,14 @@ struct Studentas {
     int pazymiuCapacity;
     int egzaminoPazimys;
 
-    Studentas() {
+    StudentasMasyvas() {
         pazymiai = new int[1];
         pazymiuSkaicius = 0;
         pazymiuCapacity = 1;
         egzaminoPazimys = 0;
     }
 
-    ~Studentas() {
+    ~StudentasMasyvas() {
         delete[] pazymiai;
     }
 };
@@ -24,13 +24,13 @@ void runDinaminiaiMasyvai() {
 
     int size = 0;
     int capacity = 1;
-    Studentas* studentas = new Studentas[capacity];
+    StudentasMasyvas* studentas = new StudentasMasyvas[capacity];
 
     string choice;
     do {
         if (size == capacity) {
             capacity++;
-            Studentas* temp = new Studentas[capacity];
+            StudentasMasyvas* temp = new StudentasMasyvas[capacity];
             for (int i = 0; i < size; i++) {
                 temp[i] = studentas[i];
             }
