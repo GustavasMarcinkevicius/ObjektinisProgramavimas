@@ -59,8 +59,18 @@
                     }
                     naujasStudentas.pazymiai.push_back(pazymys);  
         
+                    try {
                     cout << "Ar norite prideti dar viena pazymi? (taip/ne): ";
                     cin >> PazymiuIrasymoPasirinkimas;
+
+                        if (PazymiuIrasymoPasirinkimas != "taip" && PazymiuIrasymoPasirinkimas != "ne") {
+                            std::cin.clear();
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            throw std::out_of_range("Pasirinkimas turi buti taip arba ne");
+                        }
+                        }    catch (const std::out_of_range& e) {
+                            std::cerr << "Pasirinkimas turi buti taip arba ne" << std::endl;
+                        }
                 }
         
                 cout << "Iveskite studento egzamino pazymi: ";
@@ -68,8 +78,19 @@
         
                 studentai.push_back(naujasStudentas); 
         
+
+                try {
                 cout << "Prideti dar viena studenta? (taip/ne): ";
                 cin >> choice;
+                
+            if (choice != "taip" && choice != "ne"){
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                throw std::out_of_range("Pasirinkimas turi buti taip arba ne");
+            }
+            } catch (const std::out_of_range& e) {
+                std::cerr << "Pasirinkimas turi buti taip arba ne" << std::endl;
+            }
         
             } while (choice == "taip");
 
