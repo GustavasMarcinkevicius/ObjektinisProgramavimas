@@ -196,13 +196,19 @@
         }
         
 
-        if (VeikimoPasirinkimas == 2) {  
+        if (VeikimoPasirinkimas == 2) {   //skaityt
             namespace fs = std::filesystem;
             fs::path currentPath = fs::current_path();
             std::cout << "Iveskite failo pavadinima: ";
             string filename;
             std::cin >> filename;
             fs::path filePath = currentPath / filename;
+
+            try {
+                
+                if (!fs::exists(filePath)) {
+                    throw std::runtime_error("Klaida: Failas su tokiu pavadinimu neegzistuoja.");
+                }
             std::ifstream InputFile(filePath, std::ios::in);
             std::ofstream OutputFile("StudentaiOutput.txt", std::ios::trunc); 
 
@@ -305,8 +311,10 @@
             std::chrono::duration<double> ProgramDuration = ProgramEnd - Readingstart;
             cout << "Visos programos veikimo laikas: " << ProgramDuration.count() << " sekundes" << endl;
             logFile << Readingduration.count() << " " << ProgramDuration.count() << endl;
+        }catch (const std::runtime_error& e) {
+            std::cerr << e.what() << std::endl;
         }
-
+    }
     }
 
 
