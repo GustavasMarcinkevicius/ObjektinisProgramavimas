@@ -46,8 +46,17 @@
                 string PazymiuIrasymoPasirinkimas = "taip";
                 while (PazymiuIrasymoPasirinkimas == "taip") {
                     int pazymys;
+                    try {
                     cout << "Irasykite pazymi: ";
                     cin >> pazymys;
+                    if (pazymys < 1 || pazymys > 10) {
+                        std::cin.clear();
+                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        throw std::out_of_range("Klaida: Pazymys turi buti tarp 1 ir 10.");
+                    }
+                    }    catch (const std::out_of_range& e) {
+                        std::cerr << "Klaida: Pazymys turi buti tarp 1 ir 10!" << std::endl;
+                    }
                     naujasStudentas.pazymiai.push_back(pazymys);  
         
                     cout << "Ar norite prideti dar viena pazymi? (taip/ne): ";
@@ -163,7 +172,6 @@
             string filename;
             std::cin >> filename;
             fs::path filePath = currentPath / filename;
-            
             std::ifstream InputFile(filePath, std::ios::in);
             std::ofstream OutputFile("StudentaiOutput.txt", std::ios::trunc); 
 
