@@ -10,6 +10,7 @@
 #include <fstream>
 #include <sstream>
 #include <chrono> 
+#include <filesystem>
 #include "Struktura.h"
 
 using std::cout;

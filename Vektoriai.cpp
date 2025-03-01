@@ -5,6 +5,7 @@
     void WithVectors() {
 
   #include "Struktura.h"
+  #include <filesystem>
     
 
         std::ostringstream output;
@@ -156,7 +157,14 @@
         
 
         if (VeikimoPasirinkimas == 2) {  
-            std::ifstream InputFile("Studentai10000.txt", std::ios::in);
+            namespace fs = std::filesystem;
+            fs::path currentPath = fs::current_path();
+            std::cout << "Iveskite failo pavadinima: ";
+            string filename;
+            std::cin >> filename;
+            fs::path filePath = currentPath / filename;
+            
+            std::ifstream InputFile(filePath, std::ios::in);
             std::ofstream OutputFile("StudentaiOutput.txt", std::ios::trunc); 
 
             std::ofstream logFile("TestavimoLaikuLog.txt", std::ios::app);
