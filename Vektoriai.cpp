@@ -38,11 +38,21 @@
             do {
                 Studentas naujasStudentas;
         
+
+                try {
                 cout << "Iveskite studento varda: ";
                 cin >> naujasStudentas.vardas;
                 cout << "Iveskite studento pavarde: ";
                 cin >> naujasStudentas.pavarde;
-        
+                
+            if (naujasStudentas.vardas.size() == 0 || naujasStudentas.vardas.size() == 0){
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                throw std::out_of_range("Prasome ivesti varda/pavarde");
+            } 
+            } catch (const std::out_of_range& e) {
+                std::cerr << "Prasome ivesti varda/pavarde" << std::endl;
+            }
                 string PazymiuIrasymoPasirinkimas = "taip";
                 while (PazymiuIrasymoPasirinkimas == "taip") {
                     int pazymys;
