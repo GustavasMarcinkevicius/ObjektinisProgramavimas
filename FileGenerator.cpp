@@ -42,6 +42,6 @@ void generateFile(const std::string &filename, int numStudents) {
 }
 
 int main() {
-    generateFile("students.txt", 1000000);
+    generateFile("students.txt", 1000);
     return 0;
 }
