@@ -13,6 +13,7 @@ int main() {
     cout << "Pasirinkite programos veikimo buda: " << endl;
     cout << "1 - Su vektoriais" << endl;
     cout << "2 - Su C masyvais" << endl;
+    cout << "3 - Sugeneruoti failus ir isskirstyti studentus" << endl;
     cin >> choice1;
 
     switch (choice1) {
@@ -67,7 +68,13 @@ cin >> choice2;
             }
 
 
+            case 3: 
+            int StudentuKiekis;
+            cout << "Irasykite studentu kieki: "; cin >> StudentuKiekis;
+            generateFile(StudentuKiekis);
+            break;
 
     }
+    
     return 0;
 }

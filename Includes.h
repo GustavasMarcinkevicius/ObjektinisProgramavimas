@@ -33,7 +33,7 @@ string generateRandomName();
 string generateRandomSurname();
 void ApskaiciuotiVeikimoLaikoVidurki();
 void sortStudentai(std::vector<Studentas>& studentai, int RusiavimoPasirinkimas);
-// void generateFile(const std::string &filename, int numStudents)
+void generateFile(int numStudents);
 
 #endif 
 
