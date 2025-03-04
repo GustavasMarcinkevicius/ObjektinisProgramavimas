@@ -102,3 +102,8 @@ void sortStudentai(std::vector<Studentas>& studentai, int RusiavimoPasirinkimas)
         });
     }
 }
+
+// void GeneruotiFailus(){
+
+
+// }
