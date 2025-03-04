@@ -11,6 +11,9 @@
 #include <sstream>
 #include <chrono> 
 #include <filesystem>
+#include <cstdlib>
+#include <ctime>
+#include <sstream> 
 #include "Struktura.h"
 
 using std::cout;
@@ -30,6 +33,7 @@ string generateRandomName();
 string generateRandomSurname();
 void ApskaiciuotiVeikimoLaikoVidurki();
 void sortStudentai(std::vector<Studentas>& studentai, int RusiavimoPasirinkimas);
+// void generateFile(const std::string &filename, int numStudents)
 
 #endif 
 

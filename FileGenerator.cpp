@@ -1,37 +1,45 @@
+#include "Includes.h"
+#include <vector>
+#include <sstream>
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-#include <cstdlib>
-#include <ctime>
-#include <sstream> 
 
 void generateFile(const std::string &filename, int numStudents) {
     std::ofstream file(filename);
 
+    std::ios::sync_with_stdio(false);
+
+    int pazymiuSkaicius = generateRandomNumber(5, 15);
+
     file << std::left << std::setw(25) << "Vardas"
          << std::setw(25) << "Pavarde";
 
-    for (int i = 1; i <= 15; i++) {
-        file << std::setw(10) << ("ND");
+    for (int i = 1; i <= pazymiuSkaicius; i++) {
+        std::ostringstream ss;
+        ss << "ND" << i;
+        file << std::setw(6) << ss.str(); 
     }
-    file << std::setw(10) << "Egz." << "\n";
+    file << std::setw(6) << "Egz." << "\n"; 
 
-
-    std::srand(std::time(nullptr));
-
- 
+    std::ostringstream buffer;
     for (int i = 1; i <= numStudents; i++) {
+        buffer.str("");  
+        buffer.clear();
+
         std::ostringstream name, surname;
         name << "Vardas" << i;
         surname << "Pavarde" << i;
-    
-        file << std::left << std::setw(25) << name.str()
-             << std::setw(25) << surname.str();
 
-        for (int j = 0; j < 16; j++) {
-            file << std::setw(10) << (std::rand() % 10 + 1);
+        buffer << std::left << std::setw(25) << name.str()
+               << std::setw(25) << surname.str();
+
+        for (int j = 0; j < pazymiuSkaicius + 1; j++) { 
+            buffer << std::setw(6) << generateRandomNumber(1, 10);
         }
-        file << "\n";
+
+        buffer << "\n";
+        file << buffer.str();
     }
 
     file.close();
@@ -39,6 +47,6 @@ void generateFile(const std::string &filename, int numStudents) {
 }
 
 int main() {
-    generateFile("students.txt", 8);
+    generateFile("students.txt", 1000000);
     return 0;
 }
