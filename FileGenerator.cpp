@@ -1,9 +1,4 @@
 #include "Includes.h"
-#include <vector>
-#include <sstream>
-#include <iostream>
-#include <fstream>
-#include <iomanip>
 
 void generateFile(const std::string &filename, int numStudents) {
     std::ofstream file(filename);
