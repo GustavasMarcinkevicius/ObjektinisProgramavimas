@@ -13,4 +13,4 @@ cout << "Iveskite studentu kieki: " << endl;
  std::chrono::duration<double> ProgramosVeikimoLaikas = FailoSukurimoPabaiga - FailoKurimoPradzia;
  cout << "Failo kurimas su " << numStudents << " Studentu uztruko " <<  ProgramosVeikimoLaikas.count() << " sekundziu" << endl;
 return 0;
-}
+} 
