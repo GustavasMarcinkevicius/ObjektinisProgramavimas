@@ -89,8 +89,6 @@ cin >> choice2;
     std::ofstream OutputFile1("Kietekai.txt", std::ios::trunc);
     std::ofstream OutputFile2("Vargsiukai.txt", std::ios::trunc);
 
-    std::ofstream logFile("TestavimoLaikuLog.txt", std::ios::app);
-
     std::chrono::high_resolution_clock::time_point Readingstart = std::chrono::high_resolution_clock::now();
 
     string header;
@@ -181,7 +179,6 @@ cin >> choice2;
     std::chrono::high_resolution_clock::time_point ProgramEnd = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> ProgramDuration = ProgramEnd - Readingstart;
     cout << "Visos programos veikimo laikas: " << ProgramDuration.count() << " sekundes" << endl;
-    logFile << Readingduration.count() << " " << ProgramDuration.count() << endl;
 
             break;
         

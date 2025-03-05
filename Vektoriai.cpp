@@ -211,7 +211,6 @@
                 }
             std::ifstream InputFile(filePath, std::ios::in);
             std::ofstream OutputFile("StudentaiOutput.txt", std::ios::trunc); 
-
             std::ofstream logFile("TestavimoLaikuLog.txt", std::ios::app);
             
         
