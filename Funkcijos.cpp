@@ -110,17 +110,14 @@ void generateFile(int numStudents) {
 
     int pazymiuSkaicius = generateRandomNumber(5, 15);
 
-    // Write header
     file << std::left << std::setw(25) << "Vardas"
          << std::setw(25) << "Pavarde";
 
-    // Write ND columns
     for (int i = 1; i <= pazymiuSkaicius; i++) {
         file << std::setw(6) << "ND" + std::to_string(i);
     }
     file << std::setw(6) << "Egz." << "\n";
 
-    // Write student data
     for (int i = 1; i <= numStudents; i++) {
         std::string name = "Vardas" + std::to_string(i);
         std::string surname = "Pavarde" + std::to_string(i);
@@ -128,7 +125,6 @@ void generateFile(int numStudents) {
         file << std::left << std::setw(25) << name
              << std::setw(25) << surname;
 
-        // Write random grades
         for (int j = 0; j < pazymiuSkaicius + 1; j++) {
             file << std::setw(6) << generateRandomNumber(1, 10);
         }
