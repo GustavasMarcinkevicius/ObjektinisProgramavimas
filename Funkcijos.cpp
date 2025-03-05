@@ -73,7 +73,6 @@ void sortStudentai(std::vector<Studentas>& studentai, int RusiavimoPasirinkimas,
         });
     }
     else if (RusiavimoPasirinkimas == 3 && DuomenuKiekis == 1){
-        cout << "atejau iki cia" << endl;
         sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
             return a.GalutinisBalasVidurkis < b.GalutinisBalasVidurkis;
         });
