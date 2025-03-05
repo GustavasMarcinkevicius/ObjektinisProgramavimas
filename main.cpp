@@ -117,10 +117,11 @@ cin >> choice2;
     std::chrono::high_resolution_clock::time_point Readingend = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> Readingduration = Readingend - Readingstart;
 
-    sortStudentai(studentai, Rusiavimas);
+    std::chrono::high_resolution_clock::time_point RikiavimoPradzia = std::chrono::high_resolution_clock::now();
 
     for  (auto& studentas : studentai) {
-        double Vidurkis = 0, Mediana = 0, GalutinisBalasVidurkis = 0, GalutinisBalasMediana = 0;
+        double Vidurkis = 0, Mediana = 0;
+         studentas.GalutinisBalasVidurkis = 0, studentas.GalutinisBalasMediana = 0;
 
         for (int pazymys : studentas.pazymiai) {
             Vidurkis += pazymys;
@@ -142,10 +143,19 @@ cin >> choice2;
             }
         }
 
-       
         studentas.GalutinisBalasMediana = 0.4 * Mediana + 0.6 * studentas.egzaminoPazimys;
         studentas.GalutinisBalasVidurkis = 0.4 * Vidurkis + 0.6 * studentas.egzaminoPazimys;
+    }; 
+    
+    sortStudentai(studentai, Rusiavimas, 1);
 
+    std::chrono::high_resolution_clock::time_point RikiavimoPabaiga = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> RikiavimoLaikas = RikiavimoPabaiga - RikiavimoPradzia;
+
+    
+    std::chrono::high_resolution_clock::time_point RusiavimoPradzia = std::chrono::high_resolution_clock::now();
+
+    for  (auto& studentas : studentai) {
         if (Rusiavimas == 3) { 
             if (studentas.GalutinisBalasVidurkis >= 5) {
                 kietekai.push_back(studentas);
@@ -160,6 +170,13 @@ cin >> choice2;
             }
         }
     }
+      
+    std::chrono::high_resolution_clock::time_point RusiavimoPabaiga = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> RusiavimoLaikas = RusiavimoPabaiga - RusiavimoPradzia;
+
+    std::chrono::high_resolution_clock::time_point KietekuPradzia = std::chrono::high_resolution_clock::now();
+    OutputFile1 << "Vardas              Pavarde             Galutinis (Vid.)/ Galutinis (Med.)\n";
+    OutputFile1 << "--------------------------------------------------------------------------\n";
 
     for (const auto& studentas : kietekai) {
         OutputFile1 << left << setw(20) << studentas.vardas
@@ -168,7 +185,13 @@ cin >> choice2;
                    << left << setw(18) << fixed << setprecision(2) << studentas.GalutinisBalasMediana
                    << '\n';
     }
+    std::chrono::high_resolution_clock::time_point KietekuPabaiga = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> KietekuLaikas = KietekuPabaiga - KietekuPradzia;
+
     
+    std::chrono::high_resolution_clock::time_point VargsiukuPradzia = std::chrono::high_resolution_clock::now();
+    OutputFile2 << "Vardas              Pavarde             Galutinis (Vid.)/ Galutinis (Med.)\n";
+    OutputFile2 << "--------------------------------------------------------------------------\n";
     for (const auto& studentas : vargsiukai) {
         OutputFile2 << left << setw(20) << studentas.vardas
                    << left << setw(20) << studentas.pavarde
@@ -176,11 +199,16 @@ cin >> choice2;
                    << left << setw(18) << fixed << setprecision(2) << studentas.GalutinisBalasMediana
                    << '\n';
     }
+    std::chrono::high_resolution_clock::time_point VargsiukuPabaiga = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> VargsiukuLaikas = KietekuPabaiga - KietekuPradzia;
     
-
-    cout << "Skaitymo Laikas: " << Readingduration.count() << " sekundes" << endl;
     std::chrono::high_resolution_clock::time_point ProgramEnd = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> ProgramDuration = ProgramEnd - Readingstart;
+    cout << "Failo su " << StudentuKiekis << " studentu nuskaitymo laikas: " << Readingduration.count() << " sekundes" << endl;
+    cout << StudentuKiekis << " Studentu isskirstymas didejimo tvarka: " << RikiavimoLaikas.count() << " sekundes" << endl;
+    cout << StudentuKiekis << " Studentu isskirstymo i kietekus ir vargsiukus laikas: " << RusiavimoLaikas.count() << " sekundes" << endl;
+    cout << StudentuKiekis << " Studentu kieteku irasymo laikas: " << KietekuLaikas.count() << " sekundes" << endl;
+    cout << StudentuKiekis << " Studentu vargsiuku irasymo laikas: " << VargsiukuLaikas.count() << " sekundes" << endl;
     cout << "Visos programos veikimo laikas: " << ProgramDuration.count() << " sekundes" << endl;
 
             break;

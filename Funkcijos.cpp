@@ -47,7 +47,7 @@ void ApskaiciuotiVeikimoLaikoVidurki(){
     std::cout << "Vidutinis Programos veikimo laikas: " << std::fixed << std::setprecision(6) << avgRunningTime << " sekundziu" << endl;;
 }
 
-void sortStudentai(std::vector<Studentas>& studentai, int RusiavimoPasirinkimas){
+void sortStudentai(std::vector<Studentas>& studentai, int RusiavimoPasirinkimas, int DuomenuKiekis = 0){ //ar ant vektoriaus jau issaugotas studento Mediana/vidurkis
     if (RusiavimoPasirinkimas == 1) { //pagal varda
         sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
             return a.vardas < b.vardas;
@@ -56,7 +56,7 @@ void sortStudentai(std::vector<Studentas>& studentai, int RusiavimoPasirinkimas)
         sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
             return a.pavarde < b.pavarde;
         });
-    } else if (RusiavimoPasirinkimas == 3) { // pagal vidurki
+    } else if (RusiavimoPasirinkimas == 3 && DuomenuKiekis == 0) { // pagal vidurki
         sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
             double avgA = 0, avgB = 0;
             for (int pazymys : a.pazymiai) {
@@ -71,7 +71,21 @@ void sortStudentai(std::vector<Studentas>& studentai, int RusiavimoPasirinkimas)
             double galutinisB = 0.4 * avgB + 0.6 * b.egzaminoPazimys;
             return galutinisA > galutinisB;
         });
-    } else if (RusiavimoPasirinkimas == 4) { // pagal mediana
+    }
+    else if (RusiavimoPasirinkimas == 3 && DuomenuKiekis == 1){
+        cout << "atejau iki cia" << endl;
+        sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
+            return a.GalutinisBalasVidurkis < b.GalutinisBalasVidurkis;
+        });
+    }
+
+    else if (RusiavimoPasirinkimas == 4 && DuomenuKiekis == 1){
+        sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
+            return a.GalutinisBalasMediana < b.GalutinisBalasMediana;
+        });
+    }
+
+     else if (RusiavimoPasirinkimas == 4 && DuomenuKiekis == 0) { // pagal mediana
         sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
             vector<int> sortedA = a.pazymiai;
             sort(sortedA.begin(), sortedA.end());

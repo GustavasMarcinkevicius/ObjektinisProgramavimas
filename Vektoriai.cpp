@@ -131,7 +131,7 @@
             }
 
             
-            sortStudentai(studentai, RusiavimoPasirinkimas);
+            sortStudentai(studentai, RusiavimoPasirinkimas, 0);
 
             if (IsvedimoPasirinkimas == 1){
 
@@ -244,7 +244,7 @@
 
             std::chrono::duration<double> Readingduration = Readingend - Readingstart;
             
-            sortStudentai(studentai, RusiavimoPasirinkimas);
+            sortStudentai(studentai, RusiavimoPasirinkimas, 0);
   
             if (IsvedimoPasirinkimas == 1){
 
