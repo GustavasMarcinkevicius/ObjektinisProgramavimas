@@ -13,7 +13,7 @@ int main() {
     cout << "Pasirinkite programos veikimo buda: " << endl;
     cout << "1 - Su vektoriais" << endl;
     cout << "2 - Su C masyvais" << endl;
-    cout << "3 - Sugeneruoti failus ir isskirstyti studentus" << endl;
+    cout << "3 - Isskirstyti studentus is sugeneruoto failo" << endl;
     cin >> choice1;
 
     switch (choice1) {
@@ -73,6 +73,8 @@ cin >> choice2;
     int Rusiavimas;
     std::ostringstream output;
     vector<Studentas> studentai;
+    vector<Studentas> kietekai;  
+    vector<Studentas> vargsiukai;  
 
     cout << "Irasykite studentu kieki: "; cin >> StudentuKiekis;
     cout << "Pasirinkite rusiavimo tipa:" << endl;
@@ -81,7 +83,6 @@ cin >> choice2;
     cin >> Rusiavimas;
     Rusiavimas = Rusiavimas+2; // +2, nes atmesti rusiavimai pagal varda ir pavarde, kurie buvo 1 ir 2
     std::string filename = "SugeneruotiStudentai" + std::to_string(StudentuKiekis) + ".txt";
-    generateFile(StudentuKiekis);
 
     namespace fs = std::filesystem;
 
@@ -118,7 +119,7 @@ cin >> choice2;
 
     sortStudentai(studentai, Rusiavimas);
 
-    for (const auto& studentas : studentai) {
+    for  (auto& studentas : studentai) {
         double Vidurkis = 0, Mediana = 0, GalutinisBalasVidurkis = 0, GalutinisBalasMediana = 0;
 
         for (int pazymys : studentas.pazymiai) {
@@ -142,39 +143,41 @@ cin >> choice2;
         }
 
        
-        GalutinisBalasMediana = 0.4 * Mediana + 0.6 * studentas.egzaminoPazimys;
-        GalutinisBalasVidurkis = 0.4 * Vidurkis + 0.6 * studentas.egzaminoPazimys;
+        studentas.GalutinisBalasMediana = 0.4 * Mediana + 0.6 * studentas.egzaminoPazimys;
+        studentas.GalutinisBalasVidurkis = 0.4 * Vidurkis + 0.6 * studentas.egzaminoPazimys;
 
         if (Rusiavimas == 3) { 
-            if (GalutinisBalasVidurkis >= 5) {
-                OutputFile1 << left << setw(20) << studentas.vardas
-                << left << setw(20) << studentas.pavarde
-                << left << setw(18) << fixed << setprecision(2) << GalutinisBalasVidurkis
-                << left << setw(18) << fixed << setprecision(2) << GalutinisBalasMediana
-                << '\n';
+            if (studentas.GalutinisBalasVidurkis >= 5) {
+                kietekai.push_back(studentas);
             } else {
-                OutputFile2 << left << setw(20) << studentas.vardas
-                << left << setw(20) << studentas.pavarde
-                << left << setw(18) << fixed << setprecision(2) << GalutinisBalasVidurkis
-                << left << setw(18) << fixed << setprecision(2) << GalutinisBalasMediana
-                << '\n';
+                vargsiukai.push_back(studentas); 
             }
         } else if (Rusiavimas == 4) {  
-            if (GalutinisBalasMediana >= 5) {
-                OutputFile1 << left << setw(20) << studentas.vardas
-                << left << setw(20) << studentas.pavarde
-                << left << setw(18) << fixed << setprecision(2) << GalutinisBalasVidurkis
-                << left << setw(18) << fixed << setprecision(2) << GalutinisBalasMediana
-                << '\n';            } else {
-                    OutputFile2 << left << setw(20) << studentas.vardas
-                    << left << setw(20) << studentas.pavarde
-                    << left << setw(18) << fixed << setprecision(2) << GalutinisBalasVidurkis
-                    << left << setw(18) << fixed << setprecision(2) << GalutinisBalasMediana
-                    << '\n';            }
+            if (studentas.GalutinisBalasMediana >= 5) {
+                kietekai.push_back(studentas);  
+            } else {
+                vargsiukai.push_back(studentas);
+            }
         }
     }
 
-    cout << output.str();
+    for (const auto& studentas : kietekai) {
+        OutputFile1 << left << setw(20) << studentas.vardas
+                   << left << setw(20) << studentas.pavarde
+                   << left << setw(18) << fixed << setprecision(2) << studentas.GalutinisBalasVidurkis
+                   << left << setw(18) << fixed << setprecision(2) << studentas.GalutinisBalasMediana
+                   << '\n';
+    }
+    
+    for (const auto& studentas : vargsiukai) {
+        OutputFile2 << left << setw(20) << studentas.vardas
+                   << left << setw(20) << studentas.pavarde
+                   << left << setw(18) << fixed << setprecision(2) << studentas.GalutinisBalasVidurkis
+                   << left << setw(18) << fixed << setprecision(2) << studentas.GalutinisBalasMediana
+                   << '\n';
+    }
+    
+
     cout << "Skaitymo Laikas: " << Readingduration.count() << " sekundes" << endl;
     std::chrono::high_resolution_clock::time_point ProgramEnd = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> ProgramDuration = ProgramEnd - Readingstart;

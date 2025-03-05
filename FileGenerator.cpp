@@ -1,4 +1,4 @@
-//Failas, kuriame galima sukurti failus, skirtas tik laiko testavimo tikslams (kompiliuojant naudodi o2 flag'a)
+//Failas, kuriame galima sukurti failus, skirtas failu generavimui ir laiko testavimo tikslams (kompiliuojant naudodi o2 flag'a)
 
 #include "Includes.h"
 
