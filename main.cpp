@@ -1,10 +1,6 @@
 #include "Struktura.h"
 #include "Includes.h"
-void runDinaminiaiMasyvai(); 
-void WithRandomNumbers();
-void GenerateRandomNumbersAndNames();
-void WithVectors();
-void WithRandomNumbersArrays(int);
+
 
 
 int main() {
@@ -69,6 +65,15 @@ cin >> choice2;
 
 
             case 3:
+
+cout << "Pasirinkite:" << endl;
+cout <<"1. Su vektoriais" << endl;
+cout <<"2. Su list'ais" << endl;
+cout <<"3. Su deque'ais" << endl;
+int StrukturosPasirinkimas;
+cin >> StrukturosPasirinkimas;
+
+if (StrukturosPasirinkimas == 1){
     int StudentuKiekis;
     int Rusiavimas;
     std::ostringstream output;
@@ -211,6 +216,11 @@ cin >> choice2;
     cout << StudentuKiekis << " Studentu kieteku irasymo laikas: " << KietekuLaikas.count() << " sekundes" << endl;
     cout << StudentuKiekis << " Studentu vargsiuku irasymo laikas: " << VargsiukuLaikas.count() << " sekundes" << endl;
     cout << "Visos programos veikimo laikas: " << ProgramDuration.count() << " sekundes" << endl;
+}
+
+else if (StrukturosPasirinkimas == 2){
+    SuListais();
+}
 
             break;
         

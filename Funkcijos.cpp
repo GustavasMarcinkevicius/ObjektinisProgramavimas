@@ -114,6 +114,27 @@ void sortStudentai(std::vector<Studentas>& studentai, int RusiavimoPasirinkimas,
 }
 
 
+void sortStudentaiList(std::list<Studentas>& studentai, int RusiavimoPasirinkimas) {
+    if (RusiavimoPasirinkimas == 1) { // pagal varda
+        studentai.sort([](const Studentas& a, const Studentas& b) {
+            return a.vardas < b.vardas;
+        });
+    } else if (RusiavimoPasirinkimas == 2) { // pagal pavarde
+        studentai.sort([](const Studentas& a, const Studentas& b) {
+            return a.pavarde < b.pavarde;
+        });
+    }  else if (RusiavimoPasirinkimas == 3) { // pagal vidurki (GalutinisBalasVidurkis)
+        studentai.sort([](const Studentas& a, const Studentas& b) {
+            return a.GalutinisBalasVidurkis > b.GalutinisBalasVidurkis;
+        });
+    } else if (RusiavimoPasirinkimas == 4) { // pagal mediana (GalutinisBalasMediana)
+        studentai.sort([](const Studentas& a, const Studentas& b) {
+            return a.GalutinisBalasMediana > b.GalutinisBalasMediana;
+        });
+    } 
+};
+
+
 
 void generateFile(int numStudents) {
     std::string filename = "SugeneruotiStudentai" + std::to_string(numStudents) + ".txt";
