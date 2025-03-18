@@ -82,7 +82,8 @@ cin >> choice2;
     cout << "Pagal galutini pazymi (nuo Medianos) - 2" << endl;
     cin >> Rusiavimas;
     Rusiavimas = Rusiavimas+2; // +2, nes atmesti rusiavimai pagal varda ir pavarde, kurie buvo 1 ir 2
-    std::string filename = "SugeneruotiStudentai" + std::to_string(StudentuKiekis) + ".txt";
+    std::string directory = "C:\\Users\\gusta\\Desktop\\Objektinis Github\\SugeneruotiFailai";
+    std::string filename = directory + "\\SugeneruotiStudentai" + std::to_string(StudentuKiekis) + ".txt";
 
     namespace fs = std::filesystem;
 
@@ -169,9 +170,6 @@ cin >> choice2;
                 vargsiukai.push_back(studentas);
             }
         }
-        vargsiukai.shrink_to_fit();
-        kietekai.shrink_to_fit();
-        studentai.clear();
     }
       
     std::chrono::high_resolution_clock::time_point RusiavimoPabaiga = std::chrono::high_resolution_clock::now();
