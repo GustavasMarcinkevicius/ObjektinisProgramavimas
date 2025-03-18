@@ -169,6 +169,9 @@ cin >> choice2;
                 vargsiukai.push_back(studentas);
             }
         }
+        vargsiukai.shrink_to_fit();
+        kietekai.shrink_to_fit();
+        studentai.clear();
     }
       
     std::chrono::high_resolution_clock::time_point RusiavimoPabaiga = std::chrono::high_resolution_clock::now();
