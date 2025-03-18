@@ -6,10 +6,13 @@ Failu kurimo laikai:
 Antro tyrimo laikai:
 
 
-![image](https://github.com/user-attachments/assets/a54aacc5-f13f-4678-ba4b-533cccf317cb)
-![image](https://github.com/user-attachments/assets/99756dbd-b663-4945-997d-8891a14bbb3e)
-![image](https://github.com/user-attachments/assets/9e4548dc-f244-4b6d-a3cc-3ed775e32ad3)
-![image](https://github.com/user-attachments/assets/db5db34b-9e3b-46eb-9d51-655dd65a90f8)
-![image](https://github.com/user-attachments/assets/31bacc99-56bc-4912-85b4-23ce19bcdd59)
+![image](https://github.com/user-attachments/assets/bee060cf-3928-422b-800d-0a1dd9fc0448)
+![image](https://github.com/user-attachments/assets/999d71e8-a813-4870-b3b9-ce99ecbed27c)
+![image](https://github.com/user-attachments/assets/12f228d4-b5f1-443a-a326-3f130969f1b1)
+![image](https://github.com/user-attachments/assets/c994ee64-5b61-4d70-bc71-b589a2ed00fa)
+![image](https://github.com/user-attachments/assets/a817ecd7-cc53-4104-bb54-91ddf7892d8c)
+
+
+
 
 
