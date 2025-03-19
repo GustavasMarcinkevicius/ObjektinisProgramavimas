@@ -4,7 +4,9 @@ Programos veikimo laikas, lyginant vector, list ir deque:
 
 Testavimo sistemos parametrai:
 CPU - i5-1335u (10 cores, 12 threads, 12M Cache, up to 4.60 GHz)
+
 RAM - DDR4 8GB, 2667 MHz
+
 DISK - NVMe SSD, read speed up to 3500 MB/s, write speed up to 1625 MB/s
 
 ![image](https://github.com/user-attachments/assets/7ec60329-8272-40d2-9a13-4969262bcdc0)
