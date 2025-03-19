@@ -222,6 +222,10 @@ else if (StrukturosPasirinkimas == 2){
     SuListais();
 }
 
+else if (StrukturosPasirinkimas == 3){
+    SuDeque();
+}
+
             break;
         
 

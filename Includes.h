@@ -16,6 +16,7 @@
 #include <sstream> 
 #include "Struktura.h"
 #include <list>
+#include <deque>
 
 using std::cout;
 using std::string;
@@ -33,7 +34,8 @@ int generateRandomNumber(int min, int max);
 string generateRandomName();
 string generateRandomSurname();
 void ApskaiciuotiVeikimoLaikoVidurki();
-void sortStudentai(std::vector<Studentas>& studentai, int RusiavimoPasirinkimas, int DuomenuKiekis);
+template <typename Container>
+void sortStudentai(Container& studentai, int RusiavimoPasirinkimas, int DuomenuKiekis = 0);
 void generateFile(int numStudents);
 void runDinaminiaiMasyvai(); 
 void WithRandomNumbers();
@@ -42,6 +44,7 @@ void WithVectors();
 void WithRandomNumbersArrays(int);
 void SuListais();
 void sortStudentaiList(std::list<Studentas>& studentai, int RusiavimoPasirinkimas);
+void SuDeque();
 
 
 #endif 

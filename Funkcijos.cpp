@@ -46,8 +46,9 @@ void ApskaiciuotiVeikimoLaikoVidurki(){
     std::cout << "Vidutinis Skaitymo laikas: " << std::fixed << std::setprecision(6) << avgInputTime << " sekundziu" << endl;;
     std::cout << "Vidutinis Programos veikimo laikas: " << std::fixed << std::setprecision(6) << avgRunningTime << " sekundziu" << endl;;
 }
+template <typename Container>
 
-void sortStudentai(std::vector<Studentas>& studentai, int RusiavimoPasirinkimas, int DuomenuKiekis = 0){ //ar ant vektoriaus jau issaugotas studento Mediana/vidurkis
+void sortStudentai(Container& studentai, int RusiavimoPasirinkimas, int DuomenuKiekis){ //ar ant vektoriaus jau issaugotas studento Mediana/vidurkis
     if (RusiavimoPasirinkimas == 1) { //pagal varda
         sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
             return a.vardas < b.vardas;
@@ -113,6 +114,8 @@ void sortStudentai(std::vector<Studentas>& studentai, int RusiavimoPasirinkimas,
     }
 }
 
+template void sortStudentai<std::vector<Studentas>>(std::vector<Studentas>& studentai, int RusiavimoPasirinkimas, int DuomenuKiekis);
+template void sortStudentai<std::deque<Studentas>>(std::deque<Studentas>& studentai, int RusiavimoPasirinkimas, int DuomenuKiekis);
 
 void sortStudentaiList(std::list<Studentas>& studentai, int RusiavimoPasirinkimas) {
     if (RusiavimoPasirinkimas == 1) { // pagal varda
