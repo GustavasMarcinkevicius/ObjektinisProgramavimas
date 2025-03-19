@@ -1,8 +1,8 @@
 # ObjektinisProgramavimas
 
+Programos veikimo laikas, lyginant vector, list ir deque:
 
-
-
+![image](https://github.com/user-attachments/assets/7ec60329-8272-40d2-9a13-4969262bcdc0)
 
 detalūs lyginimo duomenys:
 
