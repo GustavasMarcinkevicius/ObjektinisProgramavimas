@@ -1,6 +1,6 @@
 #include "Includes.h"
 
-void SuListais(){
+void SuListais(int StrategijosPasirinkimas){
     int StudentuKiekis;
     int Rusiavimas;
     std::ostringstream output;
@@ -88,6 +88,8 @@ void SuListais(){
     
     std::chrono::high_resolution_clock::time_point RusiavimoPradzia = std::chrono::high_resolution_clock::now();
 
+    if (StrategijosPasirinkimas == 1){
+
     for  (auto& studentas : studentai) {
         if (Rusiavimas == 3) { 
             if (studentas.GalutinisBalasVidurkis >= 5) {
@@ -103,6 +105,7 @@ void SuListais(){
             }
         }
     }
+};
       
     std::chrono::high_resolution_clock::time_point RusiavimoPabaiga = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> RusiavimoLaikas = RusiavimoPabaiga - RusiavimoPradzia;
