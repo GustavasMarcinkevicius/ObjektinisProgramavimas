@@ -75,13 +75,13 @@ void sortStudentai(Container& studentai, int RusiavimoPasirinkimas, int DuomenuK
     }
     else if (RusiavimoPasirinkimas == 3 && DuomenuKiekis == 1){
         sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
-            return a.GalutinisBalasVidurkis < b.GalutinisBalasVidurkis;
+            return a.GalutinisBalasVidurkis > b.GalutinisBalasVidurkis;
         });
     }
 
     else if (RusiavimoPasirinkimas == 4 && DuomenuKiekis == 1){
         sort(studentai.begin(), studentai.end(), [](const Studentas& a, const Studentas& b) {
-            return a.GalutinisBalasMediana < b.GalutinisBalasMediana;
+            return a.GalutinisBalasMediana > b.GalutinisBalasMediana;
         });
     }
 
