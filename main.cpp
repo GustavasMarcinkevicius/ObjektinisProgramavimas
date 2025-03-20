@@ -231,11 +231,11 @@ if(StrategijosPasirinkimas == 1){
 }
 
 else if (StrukturosPasirinkimas == 2){
-    SuListais();
+    SuListais(StrategijosPasirinkimas);
 }
 
 else if (StrukturosPasirinkimas == 3){
-    SuDeque();
+    SuDeque(StrategijosPasirinkimas);
 }
 
             break;

@@ -42,9 +42,9 @@ void WithRandomNumbers();
 void GenerateRandomNumbersAndNames();
 void WithVectors();
 void WithRandomNumbersArrays(int);
-void SuListais();
+void SuListais(int);
 void sortStudentaiList(std::list<Studentas>& studentai, int RusiavimoPasirinkimas);
-void SuDeque();
+void SuDeque(int);
 
 
 #endif 
