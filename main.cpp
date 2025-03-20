@@ -73,6 +73,10 @@ cout <<"3. Su deque'ais" << endl;
 int StrukturosPasirinkimas;
 cin >> StrukturosPasirinkimas;
 
+cout << "Pasirinkite strategija: 1, 2 arba 3" << endl;
+int StrategijosPasirinkimas;
+cin >> StrategijosPasirinkimas;
+
 if (StrukturosPasirinkimas == 1){
     int StudentuKiekis;
     int Rusiavimas;
@@ -161,6 +165,8 @@ if (StrukturosPasirinkimas == 1){
     
     std::chrono::high_resolution_clock::time_point RusiavimoPradzia = std::chrono::high_resolution_clock::now();
 
+if(StrategijosPasirinkimas == 1){
+
     for  (auto& studentas : studentai) {
         if (Rusiavimas == 3) { 
             if (studentas.GalutinisBalasVidurkis >= 5) {
@@ -176,6 +182,12 @@ if (StrukturosPasirinkimas == 1){
             }
         }
     }
+
+    studentai.shrink_to_fit();
+    kietekai.shrink_to_fit();
+    vargsiukai.shrink_to_fit();
+
+}
       
     std::chrono::high_resolution_clock::time_point RusiavimoPabaiga = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> RusiavimoLaikas = RusiavimoPabaiga - RusiavimoPradzia;
