@@ -80,6 +80,10 @@ cin >> StrategijosPasirinkimas;
 if (StrukturosPasirinkimas == 1){
     std::chrono::high_resolution_clock::time_point KietekuPabaiga;
     std::chrono::duration<double> KietekuLaikas;
+    std::chrono::high_resolution_clock::time_point KietekuPradzia;
+    std::chrono::high_resolution_clock::time_point VargsiukuPradzia;
+    std::chrono::high_resolution_clock::time_point VargsiukuPabaiga;
+    std::chrono::duration<double> VargsiukuLaikas;
     int StudentuKiekis;
     int Rusiavimas;
     std::ostringstream output;
@@ -191,6 +195,30 @@ if(StrategijosPasirinkimas == 1){
 
 }
 
+if (StrategijosPasirinkimas == 3) {
+    auto partition_point = studentai.begin();
+
+    if (Rusiavimas == 3) {
+        partition_point = std::stable_partition(studentai.begin(), studentai.end(),
+            [](const Studentas& studentas) { return studentas.GalutinisBalasVidurkis >= 5; });
+    } else if (Rusiavimas == 4) {
+        partition_point = std::stable_partition(studentai.begin(), studentai.end(),
+            [](const Studentas& studentas) { return studentas.GalutinisBalasMediana >= 5; });
+    }
+
+    
+    kietekai.reserve(std::distance(studentai.begin(), partition_point));
+    vargsiukai.reserve(std::distance(partition_point, studentai.end()));
+
+    std::copy(studentai.begin(), partition_point, std::back_inserter(kietekai));
+    std::copy(partition_point, studentai.end(), std::back_inserter(vargsiukai));
+
+    studentai.clear();
+    studentai.shrink_to_fit();
+    kietekai.shrink_to_fit();
+    vargsiukai.shrink_to_fit();
+}
+
 // JEIGU MANO PARINKA STRATEGIJA NEATITINKA 2 STRATEGIJOS REIKALAVIMU IR REIKIA NAUDOTI ERASE, O NE POP_BACK
 // else if (StrategijosPasirinkimas == 2){
 //         if (Rusiavimas == 3) {
@@ -236,11 +264,12 @@ else if (StrategijosPasirinkimas == 2) {
     std::chrono::high_resolution_clock::time_point RusiavimoPabaiga = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> RusiavimoLaikas = RusiavimoPabaiga - RusiavimoPradzia;
 
-    std::chrono::high_resolution_clock::time_point KietekuPradzia = std::chrono::high_resolution_clock::now();
+    KietekuPradzia = std::chrono::high_resolution_clock::now();
     OutputFile1 << "Vardas              Pavarde             Galutinis (Vid.)/ Galutinis (Med.)\n";
     OutputFile1 << "--------------------------------------------------------------------------\n";
 
-if (StrategijosPasirinkimas == 1){
+if (StrategijosPasirinkimas == 1 || StrategijosPasirinkimas == 3){
+KietekuPradzia = std::chrono::high_resolution_clock::now();
 
     for (const auto& studentas : kietekai) {
         OutputFile1 << left << setw(20) << studentas.vardas
@@ -254,7 +283,7 @@ if (StrategijosPasirinkimas == 1){
   KietekuLaikas = KietekuPabaiga - KietekuPradzia;
 
     
-    std::chrono::high_resolution_clock::time_point VargsiukuPradzia = std::chrono::high_resolution_clock::now();
+   VargsiukuPradzia = std::chrono::high_resolution_clock::now();
     OutputFile2 << "Vardas              Pavarde             Galutinis (Vid.)/ Galutinis (Med.)\n";
     OutputFile2 << "--------------------------------------------------------------------------\n";
     for (const auto& studentas : vargsiukai) {
@@ -262,8 +291,10 @@ if (StrategijosPasirinkimas == 1){
                    << left << setw(20) << studentas.pavarde
                    << left << setw(18) << fixed << setprecision(2) << studentas.GalutinisBalasVidurkis
                    << left << setw(18) << fixed << setprecision(2) << studentas.GalutinisBalasMediana
-                   << '\n';
+                   << '\n';           
     }
+    VargsiukuPabaiga = std::chrono::high_resolution_clock::now();   
+    VargsiukuLaikas = VargsiukuPabaiga - VargsiukuPradzia; 
 }
 
 if (StrategijosPasirinkimas == 2){
@@ -280,7 +311,7 @@ if (StrategijosPasirinkimas == 2){
   KietekuLaikas = KietekuPabaiga - KietekuPradzia;
 
     
-    std::chrono::high_resolution_clock::time_point VargsiukuPradzia = std::chrono::high_resolution_clock::now();
+   VargsiukuPradzia = std::chrono::high_resolution_clock::now();
     OutputFile2 << "Vardas              Pavarde             Galutinis (Vid.)/ Galutinis (Med.)\n";
     OutputFile2 << "--------------------------------------------------------------------------\n";
     for (const auto& studentas : vargsiukai) {
@@ -292,8 +323,8 @@ if (StrategijosPasirinkimas == 2){
     }
 }
 
-    std::chrono::high_resolution_clock::time_point VargsiukuPabaiga = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> VargsiukuLaikas = KietekuPabaiga - KietekuPradzia;
+     VargsiukuPabaiga = std::chrono::high_resolution_clock::now();
+    VargsiukuLaikas = KietekuPabaiga - KietekuPradzia;
     std::chrono::high_resolution_clock::time_point ProgramEnd = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> ProgramDuration = ProgramEnd - Readingstart;
     cout << "Failo su " << StudentuKiekis << " studentu nuskaitymo laikas: " << Readingduration.count() << " sekundes" << endl;
@@ -317,5 +348,5 @@ else if (StrukturosPasirinkimas == 3){
 
     };
 
-            return 0;
+return 0;
 }
