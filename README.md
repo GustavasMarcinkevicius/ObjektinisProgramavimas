@@ -39,6 +39,18 @@ Su Deque:
 ![image](https://github.com/user-attachments/assets/bb18bd31-1ac9-47f8-8927-4edda6f97007)
 
 
+STRATEGIJŲ PALYGINIMAS: 
+
+Pirma strategija - Vektoriaus išskaidymas į du atskirus vektorius
+
+Antra strategija - Dalis vektoriaus perkeliama į kitą, tada ištrinama iš pirmos (Dažni trynimai buvo itin skausmingi programos efektyvimui, todėl ji buvo lėčiausia)
+
+Trečia strategija - Optimizuota pirma strategija
+
+![image](https://github.com/user-attachments/assets/e6bb2515-f22f-4ece-9bcb-e544eba606be)
+
+
+
 
 
 
