@@ -90,7 +90,7 @@ void sortStudentai(Container& studentai, int RusiavimoPasirinkimas, int DuomenuK
             vector<int> sortedA = a.pazymiai;
             sort(sortedA.begin(), sortedA.end());
             double medianA = 0;
-            int pazymiuKiekis = sortedA.size();
+            int pazymiuKiekis = static_cast<int>(sortedA.size());
             if (pazymiuKiekis % 2 == 0) {
                 medianA = (sortedA[pazymiuKiekis / 2 - 1] + sortedA[pazymiuKiekis / 2]) / 2.0;
             } else {
