@@ -1,5 +1,9 @@
 # ObjektinisProgramavimas
 
+Pagrindiniai programos naudojimo aspektai:
+
+Ši programa leidžia efektyviai atlikti tam tikrus veiksmus su studentų sąrašu (juos išrūšiuoti, išsskirstyti į skirtingus failus, jiems generuoti vardus, pažymius ir pnš). Taip pat šia programa galima stebėti skirtingų konteinerių, tokių kaip vector, deque ar list veikimo efektyvumą, taip pat ir skirtingų algoritmų pritaikymą. Programa tu MakeLists.txt failą, kuris leidžia lengvai sugeneruoti naudojamą failą. 
+
 Programos veikimo laikas, lyginant vector, list ir deque:
 
 Testavimo sistemos parametrai:
