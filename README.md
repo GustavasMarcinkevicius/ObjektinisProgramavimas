@@ -9,7 +9,8 @@ RAM - DDR4 8GB, 2667 MHz
 
 DISK - NVMe SSD, read speed up to 3500 MB/s, write speed up to 1625 MB/s
 
-![image](https://github.com/user-attachments/assets/7ec60329-8272-40d2-9a13-4969262bcdc0)
+![image](https://github.com/user-attachments/assets/d4af7e2b-11e0-4d19-aa95-e91ce4db606f)
+
 
 detalūs lyginimo duomenys:
 
@@ -30,6 +31,7 @@ Su Listais:
 ![image](https://github.com/user-attachments/assets/4c993f6a-9174-41e0-8d13-9eee5f67f539)
 
 Su Deque:
+
 ![image](https://github.com/user-attachments/assets/2627ab80-94db-41ba-a33a-0ad71bbb02b8)
 ![image](https://github.com/user-attachments/assets/ce591698-efba-4743-8d72-0e91fe6c9255)
 ![image](https://github.com/user-attachments/assets/220e4ec8-3899-464a-80ff-279ccbcf4332)
