@@ -220,47 +220,47 @@ if (StrategijosPasirinkimas == 3) {
 }
 
 
-else if (StrategijosPasirinkimas == 2){
-        if (Rusiavimas == 3) {
-            for (auto it = studentai.begin(); it != studentai.end(); ) {
-            if (it->GalutinisBalasVidurkis < 5) {
-                vargsiukai.push_back(*it);
-                it = studentai.erase(it);  
-            } else {
-                ++it;
-            };
-            }
-        }
-        if (Rusiavimas == 4) {
-            for (auto it = studentai.begin(); it != studentai.end(); ) {
-            if (it->GalutinisBalasMediana < 5) {
-                vargsiukai.push_back(*it);
-                it = studentai.erase(it);  
-            } else {
-                ++it;
-            };
-            }
+// else if (StrategijosPasirinkimas == 2){
+//         if (Rusiavimas == 3) {
+//             for (auto it = studentai.begin(); it != studentai.end(); ) {
+//             if (it->GalutinisBalasVidurkis < 5) {
+//                 vargsiukai.push_back(*it);
+//                 it = studentai.erase(it);  
+//             } else {
+//                 ++it;
+//             };
+//             }
+//         }
+//         if (Rusiavimas == 4) {
+//             for (auto it = studentai.begin(); it != studentai.end(); ) {
+//             if (it->GalutinisBalasMediana < 5) {
+//                 vargsiukai.push_back(*it);
+//                 it = studentai.erase(it);  
+//             } else {
+//                 ++it;
+//             };
+//             }
+//         }
+//     }
+
+else if (StrategijosPasirinkimas == 2) {
+
+    if (Rusiavimas == 3) {
+    
+        while (!studentai.empty() && studentai.back().GalutinisBalasVidurkis < 5) {
+            vargsiukai.push_back(studentai.back());
+            studentai.pop_back(); 
         }
     }
 
-// else if (StrategijosPasirinkimas == 2) {
+    if (Rusiavimas == 4) {
+        while (!studentai.empty() && studentai.back().GalutinisBalasMediana < 5) {
+            vargsiukai.push_back(studentai.back()); 
+            studentai.pop_back();  
+        }
+    }
 
-//     if (Rusiavimas == 3) {
-    
-//         while (!studentai.empty() && studentai.back().GalutinisBalasVidurkis < 5) {
-//             vargsiukai.push_back(studentai.back());
-//             studentai.pop_back(); 
-//         }
-//     }
-
-//     if (Rusiavimas == 4) {
-//         while (!studentai.empty() && studentai.back().GalutinisBalasMediana < 5) {
-//             vargsiukai.push_back(studentai.back()); 
-//             studentai.pop_back();  
-//         }
-//     }
-
-// }
+}
 
     std::chrono::high_resolution_clock::time_point RusiavimoPabaiga = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> RusiavimoLaikas = RusiavimoPabaiga - RusiavimoPradzia;
