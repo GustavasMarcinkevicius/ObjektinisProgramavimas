@@ -47,11 +47,12 @@ STRATEGIJŲ PALYGINIMAS:
 
 Pirma strategija - Vektoriaus išskaidymas į du atskirus vektorius
 
-Antra strategija - Dalis vektoriaus perkeliama į kitą, tada ištrinama iš pirmos (Dažni trynimai buvo itin skausmingi programos efektyvimui, todėl ji buvo lėčiausia)
+Antra strategija - Dalis vektoriaus perkeliama į kitą, tada ištrinama iš pirmos
 
-Trečia strategija - Optimizuota pirma strategija
+Trečia strategija - Optimizuota strategija
 
-![image](https://github.com/user-attachments/assets/e6bb2515-f22f-4ece-9bcb-e544eba606be)
+![image](https://github.com/user-attachments/assets/b600e9de-edff-46f1-bf02-99b36c897cea)
+
 
 
 
