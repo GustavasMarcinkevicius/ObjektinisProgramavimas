@@ -1,0 +1,10 @@
+^C:\USERS\GUSTA\DESKTOP\OBJEKTINIS GITHUB\OBJEKTINISPROGRAMAVIMAS\BUILD\CMAKEFILES\EC17E711384FF58F205DA707C8607FDC\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/gusta/Desktop/Objektinis Github/ObjektinisProgramavimas" "-BC:/Users/gusta/Desktop/Objektinis Github/ObjektinisProgramavimas/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/gusta/Desktop/Objektinis Github/ObjektinisProgramavimas/build/Studentai.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,12 +1,10 @@
-
 cmake_minimum_required(VERSION 3.10)
 
+project(Studentai)
+
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-project(MyProject)
-
-file(GLOB SOURCES "ObjektinisProgramavimas/*.cpp")
+file(GLOB SOURCES "*.cpp")
 
 add_executable(Studentai ${SOURCES})
-
-include_directories("${CMAKE_SOURCE_DIR}/ObjektinisProgramavimas")
