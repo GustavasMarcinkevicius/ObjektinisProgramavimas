@@ -153,6 +153,23 @@ else if (StrategijosPasirinkimas == 2) {
 
 }
 
+if (StrategijosPasirinkimas == 3) {
+    auto partition_point = studentai.begin();
+
+    if (Rusiavimas == 3) {
+        partition_point = std::stable_partition(studentai.begin(), studentai.end(),
+            [](const Studentas& studentas) { return studentas.GalutinisBalasVidurkis >= 5; });
+    } else if (Rusiavimas == 4) {
+        partition_point = std::stable_partition(studentai.begin(), studentai.end(),
+            [](const Studentas& studentas) { return studentas.GalutinisBalasMediana >= 5; });
+    }
+
+    std::copy(studentai.begin(), partition_point, std::back_inserter(kietekai));
+    std::copy(partition_point, studentai.end(), std::back_inserter(vargsiukai));
+
+    studentai.clear();
+}
+
     std::chrono::high_resolution_clock::time_point RusiavimoPabaiga = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> RusiavimoLaikas = RusiavimoPabaiga - RusiavimoPradzia;
 
@@ -160,7 +177,7 @@ else if (StrategijosPasirinkimas == 2) {
     OutputFile1 << "Vardas              Pavarde             Galutinis (Vid.)/ Galutinis (Med.)\n";
     OutputFile1 << "--------------------------------------------------------------------------\n";
 
-if (StrategijosPasirinkimas == 1){
+if (StrategijosPasirinkimas == 1 || StrategijosPasirinkimas == 3){
 
     for (const auto& studentas : kietekai) {
         OutputFile1 << left << setw(20) << studentas.vardas
